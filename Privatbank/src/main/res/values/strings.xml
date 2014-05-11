@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Privatbank</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="enter_otp_title">Enter code from sms</string>
     <string name="enter_otp_text_hint">Check SMS</string>
     <string name="enter_phone_title">Enter phone for check</string>
     <string name="enter_phone_text_hint">+38XXXxxxxxxx</string>
     <string name="add_card">Add new card</string>
     <string name="empty_list">List is empty</string>
-    <string name="err_link_device_phone_not_exist">Device hasn\'t link phone</string>
+
     <string name="err_card_list_is_empty">Card list is empty</string>
     <string name="please_wait">Please wait</string>
     <string name="err_internet">Connection error</string>
@@ -24,5 +21,54 @@
     <string name="use_always_default">Always use default card</string>
     <string name="transactions">Transactions</string>
     <string name="err_transactions_is_empty">No transactions was found</string>
+    <string name="err_internal_server_error">Server error</string>
+    <string name="err_incorrect_json">Incorrect data transfer format</string>
+    <string name="err_wrong_card_id">Wrong card number</string>
+    <string name="err_wrong_merchant_id">Incorrect merchant</string>
+    <string name="err_wrong_ccy">Wrong currency</string>
+    <string name="err_no_phone">No phone</string>
+    <string name="err_no_otp_pass">No otp was found</string>
+    <string name="err_wrong_request_action">Wrong request</string>
+    <string name="err_transaction_not_found">Transaction not found</string>
+    <string name="err_wrong_URL">Wrong URL</string>
+    <string name="err_wrong_card_number">Wrong card number</string>
+    <string name="err_no_card_id">No card number</string>
+    <string name="err_wrong_country">Country restriction</string>
+    <string name="err_int_data_not_not_integer">Wrong formant</string>
+    <string name="err_wrong_phone">Wrong phone number</string>
+    <string name="card_already_exist">Card already exist</string>
+    <string name="err_description_too_long">Description too long</string>
+    <string name="err_wrong_amount">Wrong amount</string>
+    <string name="err_wrong_phone_otp">Wrong phone</string>
+    <string name="err_no_hash_device">No device identifier</string>
+
+    <string name="err_one_tr_amt_limit_exceed">Exceed transactions limit</string>
+    <string name="err_day_amt_limit_exceed">Exceed day limit transactions</string>
+    <string name="err_month_amt_limit_exceed">Exceed month limit transactions</string>
+    <string name="err_without_otp_amt_limit_exceed">Exceed day limit transactions without otp</string>
+    <string name="err_without_3ds_amt_limit_exceed">Exceed day limit transactions without 3ds</string>
+    <string name="err_without_cvv2_amt_limit_exceed">Exceed day limit transactions without cvv2</string>
+    <string name="err_without_otp_day_limit_exceed">Exceed day limit by quantity of transactions without otp</string>
+    <string name="err_without_3ds_day_limit_exceed">Exceed day limit by quantity of transactions without 3ds</string>
+    <string name="err_without_cvv2_day_limit_exceed">Exceed day limit by quantity of transactions without cvv2</string>
+    <string name="err_merchant_blocked">Merchant is blocked</string>
+    <string name="err_wrong_otp">Otp is wrong</string>
+    <string name="err_no_history_found">Archive is empty</string>
+    <string name="err_link_device_phone_not_exist">The link device-phone does not exist</string>
+    <string name="err_no_such_card_id">Card_id is wrong</string>
+    <string name="err_no_redis_data">Transaction data does not found</string>
+    <string name="err_merchant_not_found">Merchant does not found</string>
+    <string name="err_redis_data_fail">Error</string>
+    <string name="err_card_not_allowed">Card not allowed</string>
+    <string name="err_not_allowed">No access</string>
+    <string name="err_card_in_black_list">Card in black list</string>
+
+    <string name="err_use_fin_tel">Use financial telephone</string>
+    <string name="amount_is_null">Amount is empty</string>
+    <string name="ccy_is_null">Currency is empty</string>
+    <string name="description_is_null">Description is empty</string>
+    <string name="phone_is_null">Phone is empty</string>
+    <string name="cardId_is_null">Card is empty</string>
+    <string name="callBack_is_null">Callback is empty</string>
 
 </resources>

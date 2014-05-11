@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/useDefaultCard"
+        android:layout_margin="@dimen/margin"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -22,6 +23,7 @@
             android:id="@+id/empty_list_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/empty_list" />
@@ -29,7 +31,8 @@
         <ProgressBar
             android:id="@android:id/progress"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin" />
 
 
     </LinearLayout>
@@ -39,23 +42,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/useDefaultCard"
-        tools:listitem="@android:layout/select_dialog_singlechoice"/>
+        tools:listitem="@android:layout/select_dialog_singlechoice" />
 
     <CheckBox
+        android:id="@+id/useDefaultCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/use_always_default"
-        android:id="@+id/useDefaultCard"
         android:layout_above="@+id/addCard"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin"
+        android:text="@string/use_always_default" />
 
     <Button
         android:id="@+id/addCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin"
         android:text="@string/add_card" />
-
 
 
 </RelativeLayout>

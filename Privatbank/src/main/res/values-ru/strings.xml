@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="enter_otp_title">Введите код из СМС</string>
+    <string name="enter_otp_text_hint">Проверьте СМС</string>
+    <string name="enter_phone_title">Введите телефон для привязки</string>
+    <string name="enter_phone_text_hint">+38XXXxxxxxxx</string>
+    <string name="add_card">Добавить карту</string>
+    <string name="empty_list">Список пуст</string>
+
+    <string name="err_card_list_is_empty">Списк карт пуст</string>
+    <string name="please_wait">Пожалуйста подождите...</string>
+    <string name="err_internet">Ошибка соединения</string>
+    <string name="operation_success">Операция прошла успешно</string>
+    <string name="incorrect_code">Неверные код</string>
+    <string name="remove">Удалить</string>
+    <string name="set_default">По умолчанию</string>
+    <string name="operation_error">Ошибка обработки запроса</string>
+    <string name="cards_list_title">Список карт</string>
+    <string name="choose_operation">Выберите операцию</string>
+    <string name="use_always_default">Всегда использовать карту по умолчанию</string>
+    <string name="transactions">Транзакции</string>
+    <string name="err_transactions_is_empty">Не найдено транзакций</string>
+    <string name="err_internal_server_error">Ошибка сервера</string>
+    <string name="err_incorrect_json">Неверный формат данных</string>
+    <string name="err_wrong_card_id">Неверный номер карты</string>
+    <string name="err_wrong_merchant_id">Неверный ид продавца</string>
+    <string name="err_wrong_ccy">Неверная валюта</string>
+    <string name="err_no_phone">Нет телефона</string>
+    <string name="err_no_otp_pass">Не введен отп</string>
+    <string name="err_wrong_request_action">Неверный запрос</string>
+    <string name="err_transaction_not_found">Транзакция не найдена</string>
+    <string name="err_wrong_URL">Неверный URL</string>
+    <string name="err_wrong_card_number">Неверный номер карты</string>
+    <string name="err_no_card_id">Нет номера карты</string>
+    <string name="err_wrong_country">Ограничения страны</string>
+    <string name="err_int_data_not_not_integer">Неверный формат</string>
+    <string name="err_wrong_phone">Неверный телефон</string>
+    <string name="card_already_exist">Карта уже добавлена</string>
+    <string name="err_description_too_long">Описание слишком длинное</string>
+    <string name="err_wrong_amount">Неверная цена</string>
+    <string name="err_wrong_phone_otp">Неверный пароль отп</string>
+    <string name="err_no_hash_device">Нет идентификатора устройства</string>
+
+    <string name="err_one_tr_amt_limit_exceed">Превышен лимит подключений</string>
+    <string name="err_day_amt_limit_exceed">Превышен дневной лимит подключений</string>
+    <string name="err_month_amt_limit_exceed">Превышен месячный лимит подключений</string>
+    <string name="err_without_otp_amt_limit_exceed">Превышен лимит подключений без отп</string>
+    <string name="err_without_3ds_amt_limit_exceed">Превышен лимит подключений без 3ds</string>
+    <string name="err_without_cvv2_amt_limit_exceed">Превышен лимит подключений без cvv2</string>
+    <string name="err_without_otp_day_limit_exceed">Превышен суточный лимит по кол-ву транзакций без подтверждения ОТР паролем</string>
+    <string name="err_without_3ds_day_limit_exceed">Превышен суточный лимит по кол-ву транзакций без подтверждения 3DS паролем</string>
+    <string name="err_without_cvv2_day_limit_exceed">Превышен суточный лимит по кол-ву транзакций без подтверждения cvv2 паролем</string>
+    <string name="err_merchant_blocked">Продавец заблокирован</string>
+    <string name="err_wrong_otp">Неверный ОТП</string>
+    <string name="err_no_history_found">Архив пуст</string>
+    <string name="err_link_device_phone_not_exist">Нет связки устройства и телефона</string>
+    <string name="err_no_such_card_id">Неверный ид карты</string>
+    <string name="err_no_redis_data">Не найдены данные по транзакции</string>
+    <string name="err_merchant_not_found">Нет такого продавца</string>
+    <string name="err_redis_data_fail">Ошибка</string>
+    <string name="err_card_not_allowed">Карта недоступна</string>
+    <string name="err_not_allowed">Нет доступа</string>
+    <string name="err_card_in_black_list">Карта в черном списке</string>
+
+    <string name="err_use_fin_tel">Используйте финансовый телефон</string>
+    <string name="amount_is_null">Цена пуста</string>
+    <string name="ccy_is_null">Валюта пуста</string>
+    <string name="description_is_null">Нет описания</string>
+    <string name="phone_is_null">Нет телефона</string>
+    <string name="cardId_is_null">Карта пуста</string>
+    <string name="callBack_is_null">Обратный вызов пуст</string>
+
+</resources>

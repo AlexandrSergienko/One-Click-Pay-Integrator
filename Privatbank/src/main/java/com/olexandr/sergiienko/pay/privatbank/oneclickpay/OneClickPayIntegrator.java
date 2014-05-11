@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import ua.privatbank.framework.api.Api;
@@ -76,13 +77,31 @@ public class OneClickPayIntegrator {
             @Override
             public void onApiError(ua.privatbank.payoneclicklib.Api api, Message.ErrorCode code) {
                 mApi = api;
-                Toast.makeText(mContext, "Error = " + code.name(), Toast.LENGTH_LONG).show();
+                if (!TextUtils.isEmpty(mApi.getLastServerFailCode())
+                        && !(Pay.FieldException.phone_is_null.equals(mApi.getLastServerFailCode()) ||
+                        "err_wrong_phone".equals(mApi.getLastServerFailCode()) ||
+                        "err_link_device_phone_not_exist".equals(mApi.getLastServerFailCode()))) {
+                    Toast.makeText(mContext, getErrorText(api.getLastServerFailCode()), Toast.LENGTH_LONG).show();
+                }
                 Log.e(TAG, "Error on Api." + code.name() + " lastError = " + api.getLastServerFailCode());
-
-                /* ваш код обработки ошибок которые приходят от сервера (список есть ниже)*/
-                  /* код ошибки нужно получать этим методом: api.getLastServerFailCode() */
             }
         }, merchantId);
+    }
+
+    public String getErrorText(String error) {
+        try {
+            Field f = R.string.class.getField(error);
+            Class<?> t = f.getType();
+            if (t == int.class) {
+                String str = mContext.getString(f.getInt(null));
+                return str;
+            }
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return error;
     }
 
     public void pay(final PayData payData) {
@@ -90,8 +109,8 @@ public class OneClickPayIntegrator {
                 && !TextUtils.isEmpty(payData.getDescription())
                 && !TextUtils.isEmpty(payData.getCcy())) {
             payData.setCardId(null);
-           if(!hasPhone(payData)) return;
-           if(!hasCard(payData)) return;
+            if (!hasPhone(payData)) return;
+            if (!hasCard(payData)) return;
 
             try {
                 mPay.pay(payData, new Pay.PaymentCallBack() {
@@ -143,7 +162,7 @@ public class OneClickPayIntegrator {
         }
     }
 
-    private boolean hasPhone(final PayData payData){
+    private boolean hasPhone(final PayData payData) {
         if (TextUtils.isEmpty(payData.getPhone())) {
             SharedPreferences pref = mContext.getSharedPreferences("Private ONE CLICK", Context.MODE_PRIVATE);
             payData.setPhone(pref.getString(OneClickPayIntegrator.class.getPackage().getName() + ".PhoneNumber", null));
@@ -167,7 +186,7 @@ public class OneClickPayIntegrator {
         return true;
     }
 
-    private boolean hasCard(final PayData payData){
+    private boolean hasCard(final PayData payData) {
         if (TextUtils.isEmpty(payData.getCardId())) {
             final CardListDialog dialog = new CardListDialog(mContext);
             dialog.setIntegrator(this);
@@ -189,22 +208,21 @@ public class OneClickPayIntegrator {
                     mPay.getCards(new Pay.CardListCallBack() {
                         @Override
                         public void onGetCardListSuccess(List<Card> cards) {
-                            if(cards!=null&&cards.size()>0){
-                                for(Card card:cards){
-                                    if(card.getDefault_card()){
+                            if (cards != null && cards.size() > 0) {
+                                for (Card card : cards) {
+                                    if (card.getDefault_card()) {
                                         payData.setCardId(card.getCard_id());
                                         pay(payData);
                                         break;
                                     }
                                 }
-                            }else{
+                            } else {
                                 dialog.show();
                             }
                         }
 
                         @Override
                         public void onGetCardListFailed() {
-                            Toast.makeText(mContext,R.string.err_internet,Toast.LENGTH_LONG).show();
                         }
                     });
                 } catch (Exception e) {
@@ -224,9 +242,10 @@ public class OneClickPayIntegrator {
         dialog.show();
     }
 
-    public void chooseCard() {
+    public void chooseCard(CompleteListener completeListener) {
         CardListDialog dialog = new CardListDialog(mContext);
         dialog.setIntegrator(this);
+        dialog.setCompleteListener(completeListener);
         dialog.show();
     }
 
