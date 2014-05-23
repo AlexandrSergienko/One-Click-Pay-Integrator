@@ -106,12 +106,16 @@ public class OneClickPayIntegrator {
     }
 
     public void pay(final PayData payData) {
+        pay(payData, null);
+    }
+
+    public void pay(final PayData payData, final CompleteListener listener) {
         if (payData != null && !TextUtils.isEmpty(payData.getAmount())
                 && !TextUtils.isEmpty(payData.getDescription())
                 && !TextUtils.isEmpty(payData.getCcy())) {
             payData.setCardId(null);
-            if (!hasPhone(payData)) return;
-            if (!hasCard(payData)) return;
+            if (!hasPhone(payData, listener)) return;
+            if (!hasCard(payData, listener)) return;
 
             try {
                 mPay.pay(payData, new Pay.PaymentCallBack() {
@@ -121,18 +125,18 @@ public class OneClickPayIntegrator {
                         Log.d(TAG, "onPaymentSuccess()");
                         SharedPreferences pref = mContext.getSharedPreferences("Private ONE CLICK", Context.MODE_PRIVATE);
                         pref.edit().putString(OneClickPayIntegrator.class.getPackage().getName() + ".PhoneNumber", payData.getPhone()).commit();
+                        if (listener != null) {
+                            listener.onComplete(payData.getPaymentStatus());
+                        }
                     }
 
                     @Override
                     public void onReceiveOtpSend(Pay.OtpCheckListener otpListener) {
-               /* будет вызван когда отп пароль будет отправлен на указанный телефон*/
-                        Log.d(TAG, "onReceiveOtpSend()");
                         enterOtpDialog(otpListener, mOtpCallback);
                     }
 
                     @Override
                     public void onPaymentFailed() {
-                /* ваш код обработки ошибок при осуществлении платежа*/
                         Log.d(TAG, "onPaymentFailed()");
                         if (mApi.getLastServerFailCode().equals(Pay.FieldException.phone_is_null) ||
                                 "err_wrong_phone".equals(mApi.getLastServerFailCode())) {
@@ -140,20 +144,25 @@ public class OneClickPayIntegrator {
                                 @Override
                                 public void onComplete(String phone) {
                                     payData.setPhone(phone);
-                                    pay(payData);
+                                    pay(payData, listener);
                                 }
 
                                 @Override
                                 public void onCancel() {
-
+                                    if (listener != null) {
+                                        listener.onCancel();
+                                    }
                                 }
                             });
+                        } else {
+                            if (listener != null) {
+                                listener.onCancel();
+                            }
                         }
                     }
 
                     @Override
                     public void onPaymentProcessing() {
-              /*  ваш код обработки ошибки когда платеж находится в обработке */
                         Log.d(TAG, "onPaymentProcessing()");
                     }
                 });
@@ -163,7 +172,7 @@ public class OneClickPayIntegrator {
         }
     }
 
-    private boolean hasPhone(final PayData payData) {
+    private boolean hasPhone(final PayData payData, final CompleteListener listener) {
         if (TextUtils.isEmpty(payData.getPhone())) {
             SharedPreferences pref = mContext.getSharedPreferences("Private ONE CLICK", Context.MODE_PRIVATE);
             payData.setPhone(pref.getString(OneClickPayIntegrator.class.getPackage().getName() + ".PhoneNumber", null));
@@ -174,7 +183,7 @@ public class OneClickPayIntegrator {
                 public void onComplete(String phone) {
                     payData.setPhone(phone);
                     mPhone = phone;
-                    pay(payData);
+                    pay(payData, listener);
                 }
 
                 @Override
@@ -187,7 +196,7 @@ public class OneClickPayIntegrator {
         return true;
     }
 
-    private boolean hasCard(final PayData payData) {
+    private boolean hasCard(final PayData payData, final CompleteListener listener) {
         if (TextUtils.isEmpty(payData.getCardId())) {
             final CardListDialog dialog = new CardListDialog(mContext);
             dialog.setIntegrator(this);
@@ -195,7 +204,7 @@ public class OneClickPayIntegrator {
                 @Override
                 public void onComplete(String data) {
                     payData.setCardId(data);
-                    pay(payData);
+                    pay(payData, listener);
                 }
 
                 @Override
@@ -213,7 +222,7 @@ public class OneClickPayIntegrator {
                                 for (Card card : cards) {
                                     if (card.getDefault_card()) {
                                         payData.setCardId(card.getCard_id());
-                                        pay(payData);
+                                        pay(payData, listener);
                                         break;
                                     }
                                 }
@@ -313,6 +322,5 @@ public class OneClickPayIntegrator {
 
         void onCancel();
     }
-
 
 }
