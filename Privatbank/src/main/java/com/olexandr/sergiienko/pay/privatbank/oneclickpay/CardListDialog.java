@@ -81,7 +81,6 @@ public class CardListDialog extends Dialog implements AdapterView.OnItemClickLis
                     public void onGetCardListSuccess(List<Card> cardList) {
                         mProgress.setVisibility(View.GONE);
                         mList.setVisibility(View.VISIBLE);
-               /*  ваш код обработки полученого списка карт*/
                         if (cardList == null || cardList.size() == 0) {
                             mText.setText(R.string.err_card_list_is_empty);
                             return;
@@ -239,7 +238,7 @@ public class CardListDialog extends Dialog implements AdapterView.OnItemClickLis
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-        return false;
+        return true;
     }
 
     @Override
