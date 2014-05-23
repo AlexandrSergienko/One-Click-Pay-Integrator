@@ -8,11 +8,11 @@
     <string name="add_card">Добавить карту</string>
     <string name="empty_list">Список пуст</string>
 
-    <string name="err_card_list_is_empty">Списк карт пуст</string>
-    <string name="please_wait">Пожалуйста подождите...</string>
+    <string name="err_card_list_is_empty">Список карт пуст</string>
+    <string name="please_wait">Пожалуйста, подождите...</string>
     <string name="err_internet">Ошибка соединения</string>
     <string name="operation_success">Операция прошла успешно</string>
-    <string name="incorrect_code">Неверные код</string>
+    <string name="incorrect_code">Неверный код</string>
     <string name="remove">Удалить</string>
     <string name="set_default">По умолчанию</string>
     <string name="operation_error">Ошибка обработки запроса</string>
@@ -24,7 +24,7 @@
     <string name="err_internal_server_error">Ошибка сервера</string>
     <string name="err_incorrect_json">Неверный формат данных</string>
     <string name="err_wrong_card_id">Неверный номер карты</string>
-    <string name="err_wrong_merchant_id">Неверный ид продавца</string>
+    <string name="err_wrong_merchant_id">Неверный код продавца</string>
     <string name="err_wrong_ccy">Неверная валюта</string>
     <string name="err_no_phone">Нет телефона</string>
     <string name="err_no_otp_pass">Не введен отп</string>
@@ -58,7 +58,7 @@
     <string name="err_no_such_card_id">Неверный ид карты</string>
     <string name="err_no_redis_data">Не найдены данные по транзакции</string>
     <string name="err_merchant_not_found">Нет такого продавца</string>
-    <string name="err_redis_data_fail">Ошибка</string>
+    <string name="err_redis_data_fail">Ошибка данных</string>
     <string name="err_card_not_allowed">Карта недоступна</string>
     <string name="err_not_allowed">Нет доступа</string>
     <string name="err_card_in_black_list">Карта в черном списке</string>
@@ -70,5 +70,6 @@
     <string name="phone_is_null">Нет телефона</string>
     <string name="cardId_is_null">Карта пуста</string>
     <string name="callBack_is_null">Обратный вызов пуст</string>
+    <string name="error">Ошибка</string>
 
 </resources>

@@ -9,7 +9,7 @@
     <string name="empty_list">List is empty</string>
 
     <string name="err_card_list_is_empty">Card list is empty</string>
-    <string name="please_wait">Please wait</string>
+    <string name="please_wait">Please, wait...</string>
     <string name="err_internet">Connection error</string>
     <string name="operation_success">Operation processing success</string>
     <string name="incorrect_code">Incorrect code</string>
@@ -70,5 +70,6 @@
     <string name="phone_is_null">Phone is empty</string>
     <string name="cardId_is_null">Card is empty</string>
     <string name="callBack_is_null">Callback is empty</string>
+    <string name="error">Error</string>
 
 </resources>

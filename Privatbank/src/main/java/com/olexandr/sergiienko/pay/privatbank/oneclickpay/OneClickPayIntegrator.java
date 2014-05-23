@@ -81,7 +81,8 @@ public class OneClickPayIntegrator {
                         && !(Pay.FieldException.phone_is_null.equals(mApi.getLastServerFailCode()) ||
                         "err_wrong_phone".equals(mApi.getLastServerFailCode()) ||
                         "err_link_device_phone_not_exist".equals(mApi.getLastServerFailCode()))) {
-                    Toast.makeText(mContext, getErrorText(api.getLastServerFailCode()), Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, String.format("%s: %s",mContext.getString(R.string.error),
+                            getErrorText(api.getLastServerFailCode())), Toast.LENGTH_LONG).show();
                 }
                 Log.e(TAG, "Error on Api." + code.name() + " lastError = " + api.getLastServerFailCode());
             }
@@ -263,7 +264,7 @@ public class OneClickPayIntegrator {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String otp = input.getText().toString();
-                listener.onOtpCheck(otp, mPhone, otpCallback);
+                listener.onOtpCheck(mPhone, otp, otpCallback);
                 dialog.dismiss();
             }
         });
