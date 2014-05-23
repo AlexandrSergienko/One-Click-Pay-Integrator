@@ -69,7 +69,7 @@
     <string name="description_is_null">Нема опису</string>
     <string name="phone_is_null">Нема телефону</string>
     <string name="cardId_is_null">Карта пуста</string>
-    <string name="callBack_is_null">Зворотній визов пуст</string>
+    <string name="callBack_is_null">Зворотній виклик пуст</string>
     <string name="error">Помилка</string>
 
 </resources>
